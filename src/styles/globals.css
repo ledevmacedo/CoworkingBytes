@@ -2,32 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+    html {
+        font-family: "Helvetica", system-ui, sans-serif;
+        font-weight: normal
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    @font-face {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: normal;
+        src: local('Helvetica'), url('../../Helvetica.woff') format('woff');
+    }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+    @font-face {
+        font-family: 'Helvetica Oblique';
+        font-style: italic;
+        font-weight: normal;
+        src: local('Helvetica Oblique'), url('../../Helvetica-Oblique.woff') format('woff');
+    }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    @font-face {
+        font-family: 'Helvetica Compressed';
+        font-style: normal;
+        font-weight: normal;
+        src: local('Helvetica Compressed'), url('../../helvetica-compressed-5871d14b6903a.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Helvetica Rounded Bold';
+        font-style: normal;
+        font-weight: bold;
+        src: local('Helvetica Rounded Bold'), url('../../helvetica-rounded-bold-5871d05ead8de.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Helvetica';
+        font-style: normal;
+        font-weight: bold;
+        src: local('Helvetica'), url('../../Helvetica-Bold.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Helvetica Bold Oblique';
+        font-style: italic;
+        font-weight: bold;
+        src: local('Helvetica Bold Oblique'), url('../../Helvetica-BoldOblique.woff') format('woff');
+    }
+
+    @font-face {
+        font-family: 'Helvetica Light';
+        font-style: normal;
+        font-weight: lighter;
+        /* lighter pode ser usado para uma fonte mais leve */
+        src: local('Helvetica Light'), url('../../helvetica-light-587ebe5a59211.woff') format('woff');
+    }
+
 }

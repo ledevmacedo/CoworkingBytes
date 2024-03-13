@@ -6,7 +6,13 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'sans': ['Helvetica', 'Arial', 'sans-serif'],
+    },
     extend: {
+      boxShadow: {
+        custom: '0px 23px 41px 9px rgba(0,0,0,0.1)',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
