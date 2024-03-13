@@ -11,7 +11,7 @@ export default function Parquinho() {
           {/* <AddCircle size="24" color="#FF8A65" />  */}
           balak
         </Button>
-        <Navbar>testeeee</Navbar>
+        <Navbar></Navbar>
       </div>
     </>
   );
