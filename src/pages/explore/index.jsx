@@ -36,9 +36,9 @@ export default function Explore() {
   const filterCheck = true
   return (
     <>
-      <div className="flex flex-col gap-2 pb-10 p-4">
+      <div className="flex flex-col gap-4 pb-10 pt-10 p-4">
         <>
-          { }
+
           <div className="flex gap-3 text-center w-full justify-between content-center items-center cursor-pointer">
             <div onClick={coletiveStep} className="flex flex-col items-center gap-2 w-full py-3 shadow-custom rounded-xl">
               <People size="22" className={`${step == "coletive" ? "text-zinc-950" : "text-zinc-500"}`} />
@@ -62,34 +62,36 @@ export default function Explore() {
 
 
           </div>
+
+          <div>
+            <Filter />
+          </div>
           {step == "coletive" && (
             <div>
-              <p>Compartilhada</p>
               <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
             </div>
           )}
           {step == "single" && (
             <div>
-              <p>Single</p>
               <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
             </div>
           )}
           {step == "executive" && (
             <div>
-              <p>Executiva</p>
+
               <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
             </div>
           )}
 
           {step == "meet" && (
             <div>
-              <p>Meet room</p>
+
               <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
             </div>
           )}
         </>
       </div>
-      <Navbar isReservations={true} />
+      <Navbar isExplore={true} />
     </>
   )
 }
