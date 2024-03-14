@@ -5,7 +5,10 @@ const collectionName = "Reservas"
 
 // irá ser usado para obter o que n pode ser mostrado
 async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
-    console.log("valores salas Ocupadas (horaFim,horaInicio,dia)" + typeof (horaFim), horaInicio, dia) // aqui tenho valores
+    if (!horaInicio || !horaFim || !dia) {
+        // Retorna uma lista vazia se os parâmetros de tempo e dia não forem fornecidos
+        return [];
+    }
     const collection = await getMongoCollection(collectionName)
     const agregacao = await collection.aggregate([
         {
@@ -13,7 +16,6 @@ async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
                 dia: Number(dia),
                 horaInicio: { $lt: Number(horaFim) },
                 horaFim: { $gt: Number(horaInicio) }
-
             }
         },
         {
@@ -48,26 +50,33 @@ async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
     return idsEspacosOcupados
 }
 
-
 async function listarEspacosDisponiveis(idsEspacosOcupados, tag = null, capacidade = null) {
-    const espacosCollection = await getMongoCollection("Espacos")
+    const espacosCollection = await getMongoCollection("Espacos");
 
-    let filtro = {
+    let filtro = idsEspacosOcupados.length > 0 ? {
         _id: { $nin: idsEspacosOcupados.map(id => new ObjectId(id)) }
-    }
+    } : {};
 
-    // Se a tag for fornecida e não for null, adiciona ao filtro
     if (tag) {
-        filtro.tag = tag
+        filtro.tag = tag;
     }
 
-    // Se a capacidade for fornecida e não for null, adiciona ao filtro
     if (capacidade) {
-        filtro.capacidade = { $gte: capacidade }
+        filtro.capacidade = { $gte: capacidade };
     }
 
-    const espacosDisponiveis = await espacosCollection.find(filtro).toArray()
-    return espacosDisponiveis
+    const pipeline = [
+        { $match: filtro },
+        {
+            $addFields: {
+                averageRating: { $ifNull: [{ $avg: "$rating" }, 0] } 
+            }
+        },
+        { $sort: { averageRating: -1 } } 
+    ];
+
+    const espacosDisponiveis = await espacosCollection.aggregate(pipeline).toArray();
+    return espacosDisponiveis;
 }
 
 module.exports = { encontrarSalasOcupadas, listarEspacosDisponiveis }
