@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-export function Button({ children, variant }) {
+export function Button({ children, variant, onClick }) {
   return (
     <>
       <button
+        onClick={onClick}
         variant={variant}
         className={` flex w-full content-center justify-center items-center gap-2 font-bold border-2 border-zinc-950  rounded-2xl 
         ${variant == "outline" ? " bg-white" : " bg-zinc-950 text-white"} ${
