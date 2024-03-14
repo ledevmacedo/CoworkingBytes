@@ -10,6 +10,21 @@ module.exports = {
       'sans': ['Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
+      colors: {
+        zinc: {
+          '50': '#000009',
+          '100': '#030122',
+          '200': '#0C023B',
+          '300': '#150B54',
+          '400': '#1E146D',
+          '500': '#281D86',
+          '600': '#31229F',
+          '700': '#3929B8',
+          '800': '#4731D1',
+          '900': '#4731D1', // Máximo (repetido para consistência)
+          '950': '#4731D1', // Máximo (repetido para consistência)
+        },
+      },
       boxShadow: {
         custom: '0px 23px 41px 9px rgba(0,0,0,0.1)',
       },

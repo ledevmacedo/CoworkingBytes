@@ -119,7 +119,7 @@ export default function Explore() {
           )}
 
           {step == "single" && (
-            <div>
+            <div >
               {spaces.map((space, index) => (
                 space.tag === "single" ? <RoomCard
                   key={index}

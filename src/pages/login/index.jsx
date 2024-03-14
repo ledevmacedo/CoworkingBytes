@@ -3,7 +3,7 @@ import { Button } from "@/components/button";
 import Link from "next/link";
 import { Apple, Google } from "iconsax-react";
 import { useEffect } from "react";
-
+import Image from 'next/image'
 export default function Login() {
 
 
@@ -36,7 +36,11 @@ export default function Login() {
   return (
     <div className="h-screen p-4 flex justify-evenly flex-col gap-2">
       <div>
-        <h1 className=" text-3xl font-bold">Log in</h1>
+        <h1 className=" text-3xl text-center font-bold">Wellcome to Co Orbit</h1>
+        <div className="flex justify-center mt-4">
+          <Image width={200} height={200} src="logo.svg" />
+        </div>
+
       </div>
       <div className="flex flex-col gap-4">
         <Input label="Email" required={true} type="email" />
@@ -60,13 +64,13 @@ export default function Login() {
         <div className="flex justify-center gap-2 mt-6">
           <div className="w-full flex">
             <Button variant="loginButton">
-              <Google size="32" color="#000" variant="Bold" />
+              <Google size="32"  className="text-zinc-950" variant="Bold" />
               Google
             </Button>
           </div>
           <div className="w-full">
             <Button variant="loginButton">
-              <Apple size="32" color="#000" variant="Bold" />
+              <Apple size="32" className="text-zinc-950" variant="Bold" />
               Apple
             </Button>
           </div>

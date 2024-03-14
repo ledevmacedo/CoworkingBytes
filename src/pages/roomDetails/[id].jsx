@@ -107,7 +107,7 @@ export default function RoomDetails({ title, desc, capacidade, img }) {
 
             <div className="fixed bottom-0 left-0 w-full bg-zinc-100 h-14 flex p-4 gap-2 items-center justify-between">
                 <div className="w-8/12">
-                    <h1 className="font-semibold">            {spaces.price ?
+                    <h1 className="font-semibold text-white">            {spaces.price ?
                         spaces.price.toLocaleString('en-US', { style: 'currency', currency: 'EUR' })
                         :
                         "€ 4.00 "

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Navbar({ isExplore, isReservations, isProfile }) {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-zinc-100 h-14 flex p-4 gap-2 items-center justify-around">
+    <div className="fixed bottom-0 left-0 w-full bg-purple-50 h-14 flex p-4 gap-2 items-center justify-around">
       <Link href="/explore" >
         <div className="flex items-center flex-col z-10 justify-center cursor-pointer">
           <SearchNormal

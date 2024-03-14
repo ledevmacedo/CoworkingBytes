@@ -10,7 +10,7 @@ export function RoomCard({ images, capacidade, name, rating, hour, id }) {
 
     return (
         <Link href={`/roomDetails/65f2be0ac751ea866306ecc7`}>
-            <Card className="cursor-pointer">
+            <Card className="cursor-pointer mb-4">
                 <div style={{
                     backgroundImage: `url(${images})`,
                     backgroundRepeat: "no-repeat",
