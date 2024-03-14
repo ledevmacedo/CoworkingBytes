@@ -37,8 +37,8 @@ export default function Login() {
     <div className="h-screen p-4 flex justify-evenly flex-col gap-2">
       <div>
         <h1 className=" text-3xl text-center font-bold">Wellcome to Co Orbit</h1>
-        <div className="flex justify-center mt-4">
-          <Image width={200} height={200} src="logo.svg" />
+        <div className="flex justify-center mt-6">
+          <Image width={150} height={150} src="logo.svg" />
         </div>
 
       </div>

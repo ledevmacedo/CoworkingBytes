@@ -30,7 +30,7 @@ export function RoomCard({ images, capacidade, name, rating, hour, id }) {
                     </div>
                 </div>
                 <div className="w-full">
-                    <Description opacity={true} className="font-extrabold">{hour + ":00"} ás {hour + 1 + ":00"}</Description>
+                    <Description opacity={true} className="font-extrabold">{hour + ":00"} at {hour + 1 + ":00"}</Description>
                 </div>
             </Card>
         </Link>
