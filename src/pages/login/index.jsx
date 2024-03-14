@@ -23,7 +23,7 @@ export default function Login() {
           </Link>
         </div>
         <div className=" mt-6 flex justify-center">
-          <Button>Log in</Button>
+          <Button variant="">Log in</Button>
         </div>
         <div
           className="mt-8 flex gap-4 w-full  justify-center items-center content-center
