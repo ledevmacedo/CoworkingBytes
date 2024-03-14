@@ -3,11 +3,10 @@ const { getMongoCollection } = require('../mongodb/mongodb')
 
 const collectionName = "Reservas"
 
-// irá ser usado para obter o que n pode ser mostrado
+
 async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
     if (!horaInicio || !horaFim || !dia) {
-        // Retorna uma lista vazia se os parâmetros de tempo e dia não forem fornecidos
-        return [];
+        return []
     }
     const collection = await getMongoCollection(collectionName)
     const agregacao = await collection.aggregate([
@@ -35,8 +34,6 @@ async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
         },
         {
             $match: {
-                // Se for "Coletiva" e a soma dos lugares for 200 ou mais, exclui do resultado
-                // Caso contrário, inclui (inclui todos que não são "Coletiva" independentemente da soma de lugares)
                 $or: [
                     { isColetiva: false },
                     { isColetiva: true, totalLugaresColetiva: { $gt: 200 } }
@@ -51,18 +48,18 @@ async function encontrarSalasOcupadas(horaInicio, horaFim, dia) {
 }
 
 async function listarEspacosDisponiveis(idsEspacosOcupados, tag = null, capacidade = null) {
-    const espacosCollection = await getMongoCollection("Espacos");
+    const espacosCollection = await getMongoCollection("Espacos")
 
     let filtro = idsEspacosOcupados.length > 0 ? {
         _id: { $nin: idsEspacosOcupados.map(id => new ObjectId(id)) }
-    } : {};
+    } : {}
 
     if (tag) {
-        filtro.tag = tag;
+        filtro.tag = tag
     }
 
     if (capacidade) {
-        filtro.capacidade = { $gte: capacidade };
+        filtro.capacidade = { $gte: capacidade }
     }
 
     const pipeline = [
@@ -73,10 +70,10 @@ async function listarEspacosDisponiveis(idsEspacosOcupados, tag = null, capacida
             }
         },
         { $sort: { averageRating: -1 } } 
-    ];
+    ]
 
-    const espacosDisponiveis = await espacosCollection.aggregate(pipeline).toArray();
-    return espacosDisponiveis;
+    const espacosDisponiveis = await espacosCollection.aggregate(pipeline).toArray()
+    return espacosDisponiveis
 }
 
 module.exports = { encontrarSalasOcupadas, listarEspacosDisponiveis }

@@ -1,4 +1,4 @@
-const { getMongoCollection } = require("../mongodb/mongodb");
+/* const { getMongoCollection } = require("../mongodb/mongodb");
 
 
 const collectionName = "espacos"
@@ -17,3 +17,4 @@ async function inserirEspacoDataBase(ingredientes, quantidades, tempoPreparo, pr
 }
 
 module.exports = { inserirReceitaDataBase, verificaSeExiste }
+ */
