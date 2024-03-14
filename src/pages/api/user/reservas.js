@@ -1,7 +1,7 @@
 import { criarReserva } from "@/data/user/reservar";
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
             const dadosReserva = req.body;
             const resultado = await criarReserva(dadosReserva);

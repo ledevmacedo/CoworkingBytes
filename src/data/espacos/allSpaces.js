@@ -69,10 +69,10 @@ async function listarEspacosDisponiveis(idsEspacosOcupados, tag = null, capacida
         { $match: filtro },
         {
             $addFields: {
-                averageRating: { $ifNull: [{ $avg: "$rating" }, 0] } // Calcula a média; usa 0 se 'rating' não existir
+                averageRating: { $ifNull: [{ $avg: "$rating" }, 0] } 
             }
         },
-        { $sort: { averageRating: -1 } } // Ordena por 'averageRating' em ordem decrescente
+        { $sort: { averageRating: -1 } } 
     ];
 
     const espacosDisponiveis = await espacosCollection.aggregate(pipeline).toArray();

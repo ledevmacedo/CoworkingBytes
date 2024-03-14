@@ -1,5 +1,5 @@
 // pages/api/espacos/[id].js
-import { encontrarEspaco } from '@/data/espacos/dadosSpace';
+import { encontrarEspaco } from '@/data/espacos/[id]';
 import { ObjectId } from 'mongodb';
 
 export default async function handler(req, res) {

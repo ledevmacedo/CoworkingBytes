@@ -26,8 +26,7 @@ export default function Login() {
           <Button variant="">Log in</Button>
         </div>
         <div
-          className="mt-8 flex gap-4 w-full  justify-center items-center content-center
-"
+          className="mt-8 flex gap-4 w-full  justify-center items-center content-center"
         >
           <div className="  w-full h-px bg-slate-200"></div>
           <p className="w-full text-xs flex justify-center">ou continue com</p>
