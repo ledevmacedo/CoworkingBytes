@@ -5,14 +5,14 @@ import Image from 'next/image'
 import { Description, Title } from "./typography/title";
 import Link from "next/link";
 
-export function RoomCard({ images, capacidade, name, rating, hour }) {
+export function RoomCard({ images, capacidade, name, rating, hour, id }) {
     const bg = "https://images.pexels.com/photos/273671/pexels-photo-273671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
     return (
-        <Link href="/roomDetails">
+        <Link href={`${roomDetails}/${id}`}>
             <Card className="cursor-pointer">
                 <div style={{
-                    backgroundImage: `url(${bg})`,
+                    backgroundImage: `url(${images})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover"
                 }} className="rounded-2xl w-full h-96 bg-zinc-900 p-2 flex flex-col justify-start items-end">

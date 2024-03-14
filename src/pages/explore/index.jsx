@@ -3,13 +3,18 @@ import { Filter } from "@/components/filter";
 import { Input } from "@/components/input";
 import { Navbar } from "@/components/navbar";
 import { RoomCard } from "@/components/roomCard";
-import { useState } from "react";
+import { useState, useEffect, } from "react";
+import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { People, PresentionChart, User, Buildings } from "iconsax-react"
 import { Description } from "@/components/typography/title";
 import { Card } from "@/components/card";
+
+
+
+
 
 
 
@@ -34,11 +39,46 @@ export default function Explore() {
     setStep("meet");
   }
   const filterCheck = true
+
+  const router = useRouter()
+  const [spaces, setSpaces] = useState([]);
+
+  useEffect(() => {
+    loadSpaces();
+  },);
+  const fetchSpaces = async () => {
+    try {
+      const response = await fetch(`/api/espacos/allSpaces`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch all');
+      }
+      const data = await response.json();
+      // Informações dos espaços
+      return data; // Retornar os dados buscados
+    } catch (error) {
+      console.error('Error fetching all', error);
+      throw error; // Re-throw para que o erro possa ser tratado externamente
+    }
+  };
+
+
+  const loadSpaces = async () => {
+    try {
+      const spacesData = await fetchSpaces();
+      setSpaces(spacesData); 
+    } catch (error) {
+      // Tratar erros
+    }
+  };
   return (
     <>
-      <div className="flex flex-col gap-4 pb-10 pt-10 p-4">
+      <div className="flex flex-col gap-4 pb-20 pt-10 p-4">
         <>
-
           <div className="flex gap-3 text-center w-full justify-between content-center items-center cursor-pointer">
             <div onClick={coletiveStep} className="flex flex-col items-center gap-2 w-full py-3 shadow-custom rounded-xl">
               <People size="22" className={`${step == "coletive" ? "text-zinc-950" : "text-zinc-500"}`} />
@@ -68,25 +108,47 @@ export default function Explore() {
           </div>
           {step == "coletive" && (
             <div>
-              <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
+              {spaces.map((space, index) => (
+                space.tag === "coletive" ? <RoomCard
+                  key={index}
+                  id={space.id}
+                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+              )
+              )}
             </div>
           )}
+
           {step == "single" && (
             <div>
-              <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
+              {spaces.map((space, index) => (
+                space.tag === "single" ? <RoomCard
+                  key={index}
+                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+              )
+              )}
             </div>
           )}
           {step == "executive" && (
             <div>
-
-              <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
+              {spaces.map((space, index) => (
+                space.tag === "executive" ?
+                  <RoomCard
+                    id={id}
+                    key={index}
+                    name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+              )
+              )}
             </div>
           )}
 
           {step == "meet" && (
             <div>
-
-              <RoomCard name="Luna Room" rating="1,00" images="dsd" capacidade="6" hour={10} />
+              {spaces.map((space, index) => (
+                space.tag === "meet" ? <RoomCard
+                  key={index}
+                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+              )
+              )}
             </div>
           )}
         </>
