@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <div className=" p-4 ">
       <div>
-        <h1 className=" text-3xl">Log in</h1>
+        <h1 className=" text-3xl font-bold">Log in</h1>
       </div>
       <div className=" h-screen flex justify-center flex-col gap-2">
         <div>

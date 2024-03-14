@@ -1,7 +1,7 @@
 const { getMongoCollection } = require("../mongodb/mongodb")
 const { ObjectId } = require('mongodb')
 
-const collectionName = "espacos"
+const collectionName = "Espacos"
 
 async function encontrarEspaco(idEspaco) {
     const collection = await getMongoCollection(collectionName)
