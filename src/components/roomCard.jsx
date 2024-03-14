@@ -9,7 +9,7 @@ export function RoomCard({ images, capacidade, name, rating, hour, id }) {
     const bg = "https://images.pexels.com/photos/273671/pexels-photo-273671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
     return (
-        <Link href={`/roomDetails/65f21e9dafa082587f854233`}>
+        <Link href={`/roomDetails/65f2be0ac751ea866306ecc7`}>
             <Card className="cursor-pointer">
                 <div style={{
                     backgroundImage: `url(${images})`,

@@ -104,7 +104,7 @@ export default function Explore() {
           </div>
 
           <div>
-            <Filter />
+           
           </div>
           {step == "coletive" && (
             <div>
