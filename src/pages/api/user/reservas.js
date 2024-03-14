@@ -1,18 +1,26 @@
-import { criarReserva } from "@/data/user/reservar";
+import { verReservas } from "@/data/user/reservas";
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
         try {
-            const dadosReserva = req.body;
-            const resultado = await criarReserva(dadosReserva);
+            // Usando req.query para obter os dados da query string
+            const { idUsuario } = req.query;
 
-            res.status(201).json({ message: "Reserva criada com sucesso!", data: resultado });
+            // Verifica se o idUsuario foi fornecido
+            if (!idUsuario) {
+                return res.status(400).json({ error: "idUsuario é necessário na query string" });
+            }
+
+            const resultado = await verReservas(idUsuario);
+
+            res.status(200).json({ message: "Reservas encontradas", data: resultado });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: "Sala não disponivel." });
+            res.status(500).json({ error: "Erro ao procurar reservas" });
         }
     } else {
-        res.setHeader('Allow', ['POST']);
+        // Corrigindo para permitir apenas o método GET
+        res.setHeader('Allow', ['GET']);
         res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
