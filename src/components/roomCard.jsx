@@ -8,7 +8,7 @@ export function RoomCard({ images, capacidade, name, rating, hour }) {
     const bg = "https://images.pexels.com/photos/273671/pexels-photo-273671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
     return (
-        <Card>
+        <Card className="cursor-pointer">
             <div style={{
                 backgroundImage: `url(${bg})`,
                 backgroundRepeat: "no-repeat",
@@ -20,14 +20,16 @@ export function RoomCard({ images, capacidade, name, rating, hour }) {
                 </Badge>
             </div>
 
-            <div className="flex flex-row content-center justify-between items-center">
+            <div className="flex justify-between w-full">
                 <Title variant="normal"> {name} </Title>
                 <div className="flex gap-1 items-center justify-center ">
                     <Heart size="14" variant="Bold" />
                     <p className="text-s">{rating}</p>
                 </div>
             </div>
-            <Description opacity={true} className="font-extrabold">{hour + ":00"} ás {hour + 1 + ":00"}</Description>
+            <div className="w-full">
+                <Description opacity={true} className="font-extrabold">{hour + ":00"} ás {hour + 1 + ":00"}</Description>
+            </div>
         </Card>
     )
 }
