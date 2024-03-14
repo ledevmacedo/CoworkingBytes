@@ -2,8 +2,37 @@ import { Input } from "@/components/input";
 import { Button } from "@/components/button";
 import Link from "next/link";
 import { Apple, Google } from "iconsax-react";
+import { useEffect } from "react";
 
 export default function Login() {
+
+
+  useEffect(() => {
+
+  },)
+
+  const fetchInfoReceitas = async (query) => {
+    try {
+      const response = await fetch(`/api/receitas/receitas?titulo=${query}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      if (!response.ok) {
+        throw new Error('Failed to fetch favorite recipes')
+      }
+      const data = await response.json()
+      // informacoes da receita, likes sendo array de ids
+      setReceita(data)
+    } catch (error) {
+      console.error('Error fetching favorite recipes:', error)
+    }
+    setIsLoading(false)
+  }
+
+
+
   return (
     <div className="h-screen p-4 flex justify-evenly flex-col gap-2">
       <div>

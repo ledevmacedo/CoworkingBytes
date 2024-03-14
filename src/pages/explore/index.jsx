@@ -112,7 +112,7 @@ export default function Explore() {
                 space.tag === "coletive" ? <RoomCard
                   key={index}
                   id={space.id}
-                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+                  name={space.name} rating={Math.floor(space.averageRating)} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
               )
               )}
             </div>
@@ -123,7 +123,7 @@ export default function Explore() {
               {spaces.map((space, index) => (
                 space.tag === "single" ? <RoomCard
                   key={index}
-                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+                  name={space.name} rating={Math.floor(space.averageRating)} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
               )
               )}
             </div>
@@ -132,10 +132,9 @@ export default function Explore() {
             <div>
               {spaces.map((space, index) => (
                 space.tag === "executive" ?
-                  <RoomCard
-                    id={id}
+                  <RoomCard                    
                     key={index}
-                    name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+                    name={space.name} rating={Math.floor(space.averageRating)} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
               )
               )}
             </div>
@@ -146,7 +145,7 @@ export default function Explore() {
               {spaces.map((space, index) => (
                 space.tag === "meet" ? <RoomCard
                   key={index}
-                  name={space.name} rating={space.averageRating} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
+                  name={space.name} rating={Math.floor(space.averageRating)} images={space.images[0]} capacidade={space.capacidade} hour={10} /> : null
               )
               )}
             </div>
