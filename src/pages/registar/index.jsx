@@ -3,11 +3,11 @@ import { Input } from "@/components/input";
 
 export default function Registar() {
   return (
-    <div className=" p-4">
+    <div>
       <div>
         <h1 className=" text-3xl font-bold">Registar</h1>
       </div>
-      <div className=" h-screen flex justify-center flex-col gap-2">
+      <div className=" h-screen p-4 flex justify-center flex-col gap-2">
         <div>
           <Input label="Nome:" />
         </div>
