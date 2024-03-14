@@ -1,29 +1,26 @@
-import { People } from "iconsax-react"
-import { Description } from "./typography/title"
-
-export function Filter({ isColective }) {
-
+export function Filter() {
     return (
         <>
-            <div className="flex gap-0 text-center justify-center content-center items-center cursor-pointer">
-                <div className="w-full p-2 flex flex-col gap-3 items-center justify-center content-center">
-                    <People size="22" className="text-zinc-950" />
-                    <Description>Coletiva</Description>
-                    <div className="w-full h-0.5 bg-black"></div>
-                </div>
+            <div className="flex gap-2 items-center justify-between">
+                <select
+                    name="HeadlineAct"
+                    id="HeadlineAct"
+                    className="mt-1.5 p-3 w-full rounded-lg border-gray-300 text-zinc-700 sm:text-sm"
+                >
+                    <option value="">Hour</option>
+                    <option value="0">00:00</option>
+                    <option value="0">01:00</option>
+                </select>
 
-                <div onClick={onClick} className="w-full p-2 flex flex-col gap-3 items-center justify-center content-center">
-                    <People size="22" className="text-zinc-950" />
-                    <Description>Coletiva</Description>
-                    <div className="w-full h-0.5 bg-black"></div>
-                </div>
-
-
-                <div className="w-full p-2 flex flex-col gap-3 items-center justify-center content-center">
-                    <People size="22" className="text-zinc-950" />
-                    <Description>Coletiva</Description>
-                    <div className="w-full h-0.5 bg-black"></div>
-                </div>
+                <select
+                    name="HeadlineAct"
+                    id="HeadlineAct"
+                    className="mt-1.5 p-3 w-full rounded-lg border-gray-300 text-zinc-700 sm:text-sm"
+                >
+                    <option value="">Hour</option>
+                    <option value="0">00:00</option>
+                    <option value="0">01:00</option>
+                </select>
             </div>
         </>
     )
