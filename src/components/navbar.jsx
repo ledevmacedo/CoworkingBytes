@@ -5,10 +5,9 @@ import Link from "next/link";
 
 export function Navbar({ isHome, isProfile, isReservations }) {
   return (
-    <div className="p-4">
-      <div className=" p-2 text-center fixed bottom-0 left-0 right-0 border-t-2 ">
-        <div className="h-full  flex gap-2 items-center justify-evenly align-center">
-
+    <div className="p-4 ">
+      <div className=" p-2 text-center  bg-white fixed bottom-0 left-0 right-0 border-t-2 ">
+        <div className="h-full   flex gap-2 items-center justify-evenly align-center">
 
           <Link href={`/search`}>
             <div className="flex items-center flex-col justify-center cursor-pointer">

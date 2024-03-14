@@ -1,6 +1,6 @@
 export function Title({ children, variant }) {
     return (
-        <h1 className={`text-xl ${variant == "normal" ? "font-normal ": "font-semibold"}`}>
+        <h1 className={`text-xl ${variant == "normal" ? "font-normal " : "font-semibold"}`}>
             {children}
         </h1>
     )
@@ -14,9 +14,9 @@ export function Subtitle({ children }) {
     )
 }
 
-export function Description({ children, opacity }) {
+export function Description({ children, opacity, className }) {
     return (
-        <p className={` text-sm font-normal ${opacity ? "opacity-80" : ""}`}>
+        <p className={`${className} text-sm font-normal ${opacity ? "opacity-80" : ""}`}>
             {children}
         </p>
     )
